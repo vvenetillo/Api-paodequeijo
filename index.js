@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   }
 });
 
-app.post("/", (req, res) => {
+app.post("/contact", (req, res) => {
   try {
     const newContacto = {
       fname: req.body.fname,
@@ -57,7 +57,8 @@ app.post("/", (req, res) => {
   }
 });
 
-app.listen(3001, () => {
+app.listen(port, () => {
+  
   try{
     console.log(`Servidor está rodando na porta ${port}`);
 
