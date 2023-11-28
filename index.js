@@ -6,6 +6,11 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+//VARIAVEL DOTENV
+const dbUdser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASS;
+const port = process.env.PORT || 3001; 
+
 // Politica de privacidade do cors
 app.use(cors({
   origin: '*', 
@@ -24,7 +29,7 @@ let contacto =  {
 }
 
 // rotas 
-  app.get('/contact',  (req, res) => { 
+  app.get('/',  (req, res) => { 
     console.log(res.body)
     try{
     res.json(contacto.contacts);
@@ -34,7 +39,7 @@ let contacto =  {
     }
   });
   
-  app.post('/contact', (req, res) => {
+  app.post('/', (req, res) => {
     try {
       const newContacto = {
         fname: req.body.fname,
@@ -58,9 +63,7 @@ let contacto =  {
   
 
   
-  const dbUdser = process.env.DB_USER;
-  const dbPassword = process.env.DB_PASS;
-  const port = process.env.PORT || 3001; 
+ 
 
 
 
