@@ -5,9 +5,6 @@ const cors = require("cors");
 
 const app = express();
 
-//VARIAVEL DOTENV
-const dbUdser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASS;
 const port = process.env.PORT || 3001;
 
 // Politica de privacidade do cors
@@ -60,12 +57,12 @@ app.post("/", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Servidor está rodando na porta ${port}`);
-});
+app.listen(3001, () => {
+  try{
+    console.log(`Servidor está rodando na porta ${port}`);
 
-try {
-  res.status(200).send({msg: 'sucess'});
-} catch (err) {
-  console.log(err);
-}
+  }
+  catch (err) {
+    console.error(err);
+  }
+});
