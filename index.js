@@ -20,7 +20,7 @@ app.use(
 // Leitura em formato Json
 app.use(express.json());
 
-//Importação do model
+
 let contacto = {
   contacts: [],
 };
@@ -28,6 +28,15 @@ let contacto = {
 // rotas
 
 app.get("/", (req, res) => {
+  console.log(res.body);
+  try {
+    res.json(contacto.contacts);
+  } catch (error) {
+    console.error(error);
+    res.status(200).send("Error");
+  }
+});
+app.get("/user/:id", (req, res) => {
   console.log(res.body);
   try {
     res.json(contacto.contacts);
