@@ -1,21 +1,19 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
+// Define the schema for the 'contacto' collection
+const contatoSchema = new mongoose.Schema({
+  fname: String,
+  femail: String,
+  ftelefone: Number,
+  fcidade: String,
+  fmensagem: String,
+  fbairro: String,
+  fcep: String,
+});
 
-// Define o array de objetos 'contacto' com os campos especificados
-const contato = mongoose.model('Contato' ,
-    {
-      
-      fname: String,
-      femail: String,
-      ftelefone: Number,
-      fcidade: String,
-      fmensagem: String,
-      fbairro: String,
-      fcep: Number
-      
-    })
-  
-  // eslint-disable-next-line no-undef 
-  module.exports = contato
+// Create the 'Contato' model using the defined schema
+const Contato = mongoose.model('Contato', contatoSchema);
+
+module.exports = Contato;
