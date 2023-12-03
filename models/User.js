@@ -17,5 +17,5 @@ const contato = mongoose.model('Contato' ,
       
     })
   
-  // eslint-disable-next-line no-undef  
+  // eslint-disable-next-line no-undef 
   module.exports = contato

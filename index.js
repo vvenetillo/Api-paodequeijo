@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const mongoose = require('mongoose')
 
 const app = express();
 
@@ -58,13 +59,24 @@ app.post("/contact", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  
-  try{
-    console.log(`Servidor está rodando na porta ${port}`);
 
-  }
-  catch (err) {
-    console.error(err);
-  }
-});
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+
+mongoose.connect(
+  `mongodb+srv://${dbUser}:${dbPassword}@cluster0.a7o4it1.mongodb.net/?retryWrites=true&w=majority`
+  )
+  .then(() => {
+    console.log('Conectou ao banco de dados')
+    app.listen(port, () => {
+      
+      try{
+        console.log(`Servidor está rodando na porta ${port}`);
+    
+      }
+      catch (err) {
+        console.error(err);
+      }
+    });
+  })
+  .catch((err) => console.error("Erro de conexão com o MongoDB", err));
