@@ -25,10 +25,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/contact", async (req, res) => {
+  const { fname, femail, ftelefone, fcidade, fmensagem, fbairro, fcep } = req.body;
+  const parsedFcep = parseInt(fcep, 10);
+  
   try {
-    const { fname, femail, ftelefone, fcidade, fmensagem, fbairro } = req.body;
 
-    const parsedFcep = parseInt(fcep, 10);
 
     const newContact = new Contato({
       fname,
@@ -58,28 +59,26 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// ...
 
 app.get("/user/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const Contacto = await Contato.findById(id);
+    const id = req.params.id; // Correção aqui, usar req.params.id
+    const Contacto = await Contato.findById(id); // Correção aqui, remover o objeto
     
     if (!Contacto) {
-      // Handle the case where no user is found with the given userId
       return res.status(404).json({ message: "User not found" });
     }
-
+    res.json(Contacto.Contato);
     res.json({
-      id: Contacto._id,
-      fname: Contacto.fname,
-      femail: Contacto.femail,
-      ftelefone: Contacto.ftelefone,
-        fcidade: Contacto.fcidade,
-        fmensagem: Contacto.fmensagem,
-        fbairro: Contacto.fbairro,
-        fcep: Contacto.fcep,
-        Contacto
+      id: Contato._id,
+      fname: Contato.fname,
+      femail: Contato.femail,
+      ftelefone: Contato.ftelefone,
+      fcidade: Contato.fcidade,
+      fmensagem: Contato.fmensagem,
+      fbairro: Contato.fbairro,
+      fcep: Contato.fcep,
+      Contato
     });
   } catch (error) {
     console.error(error);
@@ -87,9 +86,6 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
-// ...
-
-// Other routes...
 
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;

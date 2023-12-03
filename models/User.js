@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 // Define the schema for the 'contacto' collection
 const contatoSchema = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
   fname: String,
   femail: String,
   ftelefone: Number,
