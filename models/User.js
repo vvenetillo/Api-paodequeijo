@@ -12,6 +12,10 @@ const contatoSchema = new mongoose.Schema({
   fmensagem: String,
   fbairro: String,
   fcep: String,
+  createdAt: {
+    type: Date,
+    default: Date.now // Vai gravar a data de criação automaticamente
+  }
 });
 
 // Create the 'Contato' model using the defined schema
