@@ -98,7 +98,7 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
-// Conectar ao MongoDB
+// Conectando ao MongoDB
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 

@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
 
-// Define the schema for the 'contacto' collection
 const contatoSchema = new mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
   fname: String,
@@ -14,11 +13,10 @@ const contatoSchema = new mongoose.Schema({
   fcep: String,
   createdAt: {
     type: Date,
-    default: Date.now // Vai gravar a data de criação automaticamente
+    default: Date.now 
   }
 });
 
-// Create the 'Contato' model using the defined schema
 const Contato = mongoose.model('Contato', contatoSchema);
 
 module.exports = Contato;
